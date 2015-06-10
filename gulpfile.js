@@ -145,7 +145,7 @@ gulp.task('watch', function() {
 	var source = config.source;
 
 	gulp.watch(source.imagePath, ['optimize-images']);
-	gulp.watch(source.partials + '*.html', ['inject', 'inject.legacy']);
+	gulp.watch(source.partials + '*.html', ['inject']);
 	gulp.watch([
 			source.scripts.source.srcFile,
 			source.scripts.path + 'libs/**/*.js'

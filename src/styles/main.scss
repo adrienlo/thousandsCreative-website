@@ -1,3 +1,33 @@
-#main-pop-in {
+header {
+	background: #fff;
 
+	.primary-nav {
+		ul {
+			@include list-inline();
+
+			li {
+				@include font-size(14px);
+			}
+		}
+	}
+
+	.menu-toggle {
+
+	}
+}
+
+.thousands-mission {
+
+}
+
+.thousands-slides {
+	picture,
+	img {
+		@include full-width();
+		vertical-align: top;
+	}
+}
+
+footer {
+	background: #2a2a2a;
 }
