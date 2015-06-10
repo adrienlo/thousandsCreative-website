@@ -1,0 +1,203 @@
+#dynamicFilter {
+	max-width: 1172px;
+	margin: 0 auto;
+	color: #393939;
+	font-size: 11px;
+	font-family: arial,helvetica,sans-serif;
+
+	> ul {
+		display: block;
+		list-style: none;
+
+		> li {
+			float: left;
+		}
+	}
+	
+	.narrow-by,
+	.clear-all {
+		text-transform: uppercase;
+		letter-spacing: .3px;
+		color: white;
+		margin-bottom: 20px;
+	}
+
+	.clear-all {
+		cursor: pointer;
+		display: none;
+	}
+
+	.filter {
+		width: 130px;
+		margin: 0 5px 5px 0;
+		padding-right: 9px;
+		font-size: 12px;
+
+		.header {
+			position: relative;
+			z-index: 10;
+			width: 130px;
+			height: 21px;
+			font-family: arial,helvetica,sans-serif;
+			font-size: 12px;
+			font-weight: normal;
+			cursor: pointer;
+			background: none repeat scroll 0 0 #F4F3F8;
+			border: 1px solid #D9D9D9;
+			border-radius: 5px;
+			moz-border-radius: 5px;
+			webkit-border-radius: 5px;
+
+			span {
+				display: inline-block;
+				padding-left: 7px;
+				padding-top: 4px;
+				width: 90%;
+				background: url('http://i.nordstromimage.com/images/default/shop/image/fashionresults/2010/0821/sideArrow.png') no-repeat scroll right center transparent;
+			}
+		}
+
+		.options {
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 19px;
+			margin-left: -1px;
+			width: 130px;
+			border-left: 1px solid #D9D9D9;
+			border-right: 1px solid #D9D9D9;
+			background: #FFF;
+			-moz-box-shadow: 1px 2px 1px #D5D5D5;
+			-webkit-box-shadow: 1px 2px 1px #D5D5D5;
+			box-shadow: 1px 2px 1px #D5D5D5;
+
+			.scroller {
+					width: 129px;
+					max-height: 202px;
+					padding: 4px 0 6px;
+					margin: 0;
+					color: #565453;
+					overflow-x: hidden;
+					overflow-y: auto;
+					z-index: 99;
+					border-top: 1px solid #D9D9D9;
+
+					.divider {
+						height: 1px;
+						background-color: #ccc;
+						margin: 8px 5px 9px 5px;
+					}
+				}
+
+			ul {
+				list-style: none;
+				margin-left: 5px;
+				cursor: default;
+				padding-bottom: 0;
+			}
+
+			li {
+				color: #393939;
+				margin-bottom: 5px;
+				padding-left: 15px;
+				font-size: 12px;
+				cursor: pointer;
+				font-family: arial,helvetica,sans-serif;
+				background: url('http://i.nordstromimage.com/images/default/shop/image/fashionresults/2010/0821/sprite-filter-controls.png') no-repeat left -152px;
+				display: block;
+
+				&.selected {
+					  background-position: 0 -254px;
+				}
+
+				&.viewall {
+					display: block;
+					float: none;
+					border-bottom: 1px solid #ccc;
+					padding-bottom: 4px;
+					width: auto;
+				}
+			}
+		}
+	
+		// Swatch
+		&.color {
+
+			li:not(.viewall) {
+				float: left;
+				width: 16px;
+				height: 16px;
+				border: solid 1px #CCC;
+				margin: 5px 5px 0 1px;
+				line-height: 25px;
+				cursor: pointer;
+				background-image: none;
+				padding: 0;
+
+				&.hover {
+					border: solid 1px black;
+					margin: 5px 5px 0 1px;
+				}
+
+				&.selected {
+					border: solid 2px #9A251B;
+					margin: 4px 4px -1px 0;
+				}
+			}
+
+			.swatch {
+				text-indent: -100px;
+				width: 14px;
+				height: 14px;
+				overflow: hidden;
+				margin: 1px;
+				padding: 0;
+				float: left;
+
+				&.brown		{ background-color:#6A3E23; }
+				&.offwhite	{ background-color:#F6F5F3; }
+				&.metallic	{ background-color:#ada456; }
+				&.beige		{ background-color:#D1CF9C; }
+				&.green		{ background-color:#156213; }
+				&.red		{ background-color:#C02727; }
+				&.grey		{ background-color:#D4D4DD; }
+				&.pink		{ background-color:#EEAFB5; }
+				&.white		{ background-color:#FFF; 	}
+				&.blue		{ background-color:#1F229A; }
+				&.purple	{ background-color:#5F1362; }
+				&.black		{ background-color:#000; 	}
+				&.yellow	{ background-color:#F0F000; }
+				&.orange	{ background-color:#C08527; }
+			}
+		}
+
+		// All hover state changes
+		&.hover {
+
+			.header {
+				background-position: 0 -40px!important;
+				z-index: 30;
+				border-bottom: none;
+				moz-border-radius: 5px 5px 0 0;
+				webkit-border-radius: 5px 5px 0 0;
+				border-radius: 5px 5px 0 0;
+				background-color: #eee;
+				background: -moz-linear-gradient(center top,#F4F3F8,#FFF) repeat scroll 0 0 transparent;
+				background: -webkit-gradient(linear,center top,left bottom,from(#F4F3F8),to(#FFF));
+				-moz-box-shadow: 1px 0 1px #C4C4C4;
+				-webkit-box-shadow: 1px 0 1px #C4C4C4;
+				box-shadow: 1px 0 1px #C4C4C4;
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+
+				span {
+					background: url('http://i.nordstromimage.com/images/default/shop/image/fashionresults/2010/0821/downArrow.gif') no-repeat scroll right center transparent;
+				}
+			}
+
+			.options {
+				display: block;
+			}
+		}
+	}
+}

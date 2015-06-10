@@ -1,0 +1,42 @@
+body {
+	&:before {
+		display: none !important;
+		content: "mobile";
+	}
+}
+
+@media (min-width: $min-xsmall) {
+	body {
+		&:before {
+			display: none !important;
+			content: "mobile";
+		}
+	}
+}
+
+@media (min-width: $min-small) {
+	body {
+		&:before {
+			display: none !important;
+			content: "tablet";
+		}
+	}
+}
+
+@media (min-width: $min-medium) {
+	body {
+		&:before {
+			display: none !important;
+			content: "desktop-small";
+		}
+	}
+}
+
+@media (min-width: $min-large) {
+	body {
+		&:before {
+			display: none !important;
+			content: "desktop";
+		}
+	}
+}

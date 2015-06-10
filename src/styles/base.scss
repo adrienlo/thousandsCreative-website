@@ -1,0 +1,131 @@
+$font-sans-base: Arial, sans-serif;
+$font-serif-base: Georgia, Times, "Times New Roman", serif;
+$font-emphasis: Arial, sans-serif;
+
+$lineheight			: 1.7;
+$letterSpacing		: 1.2px;
+
+$min-xsmall			: 480px;
+$min-small			: 768px;
+$min-medium			: 992px;
+$min-large			: 1200px;
+
+$max-xsmall			: ($min-small - 1);
+$max-small			: ($min-medium - 1);
+$max-medium			: ($min-large - 1);
+
+html {
+	&:before {
+		display: none !important;
+		content: "mobile";
+	}
+}
+
+html, body {
+	background: #fff;
+	color: #000;
+	position: relative;
+	margin: 0;
+	width: 100%;
+	font-family: $font-sans-base;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+	margin-top: 0;
+	padding: 0;
+	color: #000;
+	font-family: $font-sans-base;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: 1.2;
+}
+
+.xs-screen,
+.sm-screen,
+.med-screen,
+.lg-screen,
+.xs-screen-inline,
+.sm-screen-inline,
+.med-screen-inline,
+.lg-screen-inline {
+	display: none !important;
+}
+
+.xs-screen {
+	@media (max-width: $max-xsmall) {
+		@include responsive-visible();
+	}
+}
+
+.sm-screen {
+	@media (min-width: $min-small) and (max-width: $max-small) {
+		@include responsive-visible();
+	}
+}
+
+.med-screen {
+	@media (min-width: $min-medium) and (max-width: $max-medium) {
+		@include responsive-visible();
+	}
+}
+
+.lg-screen {
+	@media (min-width: $min-large) {
+		@include responsive-visible();
+	}
+}
+
+.xs-screen-inline {
+	@media (max-width: $min-xsmall) {
+		@include responsive-visible-inline();
+	}
+}
+
+.sm-screen-inline {
+	@media (min-width: $min-small) and (max-width: $max-small) {
+		@include responsive-visible-inline();
+	}
+}
+
+.med-screen-inline {
+	@media (min-width: $min-medium) and (max-width: $max-medium) {
+		@include responsive-visible-inline();
+	}
+}
+
+.lg-screen-inline {
+	@media (min-width: $min-large) {
+		@include responsive-visible-inline();
+	}
+}
+
+.hidden-xs {
+	@media (max-width: $max-xsmall) {
+    	@include responsive-hidden();
+	}
+}
+.hidden-sm {
+	@media (min-width: $min-small) and (max-width: $max-small) {
+		@include responsive-hidden();
+	}
+}
+.hidden-md {
+	@media (min-width: $min-medium) and (max-width: $max-medium) {
+		@include responsive-hidden();
+	}
+}
+.hidden-lg {
+	@media (min-width: $min-large) {
+		@include responsive-hidden();
+	}
+}
+
+.push-left {
+	float: left;
+}
+
+.push-right {
+	float: right;
+}

@@ -1,0 +1,41 @@
+{
+	"name": "thousandsCreative",
+	"server": {
+		"port": "8001"
+	},
+	"build": {
+		"root": "./build/",
+		"styles": {
+			"outputName": "thousandsCreative",
+			"path": "./build/css/"
+		},
+		"scripts": {
+			"path": "./build/js/"
+		},
+		"imagePath": "/images/"
+	},
+	"source": {
+		"imagePath": "./src/images/",
+		"partials": "./src/partials/",
+		"styles": {
+			"srcFile": "./src/styles/bootstrap.scss",
+			"files": [
+				"./src/styles/**/*.scss"
+			]
+		},
+		"scripts": {
+			"path": "./src/js/",
+			"source": {
+				"outputName": "thousandsCreative",
+				"srcFile": "./src/js/main.js",
+				"files": "./src/js/**/*.js"
+			},
+			"thirdParty": {
+				"outputName": "thousandsCreative.thirdParty",
+				"files": [
+					"./src/js/vendor/jquery.slides.js"
+				]
+			}
+		}
+	}
+}
