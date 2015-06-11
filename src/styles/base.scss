@@ -1,9 +1,15 @@
-$font-sans-base: Arial, sans-serif;
-$font-serif-base: Georgia, Times, "Times New Roman", serif;
-$font-emphasis: Arial, sans-serif;
+$font-sans-base: 'Roboto', sans-serif;
+$font-serif-base: $font-sans-base;
+$font-emphasis: $font-sans-base;
 
-$lineheight			: 1.7;
+$lineheight			: 1.8em;
 $letterSpacing		: 1.2px;
+
+$link-color			: #2a2a2a;
+
+$menu-toggle-width	: 20px;
+$menu-toggle-height	: 2px;
+$menu-toggle-color	: $link-color;
 
 $min-xsmall			: 480px;
 $min-small			: 768px;
@@ -24,11 +30,17 @@ html {
 html, body {
 	background: #fff;
 	color: #000;
-	position: relative;
-	margin: 0;
-	width: 100%;
 	font-family: $font-sans-base;
 	-webkit-font-smoothing: subpixel-antialiased;
+	line-height: $lineheight;
+	margin: 0;
+	position: relative;
+	width: 100%;
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
 }
 
 h1, h2, h3, h4, h5 {
@@ -40,6 +52,12 @@ h1, h2, h3, h4, h5 {
 	font-variant: normal;
 	font-weight: bold;
 	line-height: 1.2;
+}
+
+.ada-hidden {
+	display: none !important;
+	left: -99999px;
+	visibility: hidden !important;
 }
 
 .xs-screen,

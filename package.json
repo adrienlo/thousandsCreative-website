@@ -1,13 +1,12 @@
 {
   "name": "Template",
   "version": "0.0.1",
-  "description": "Pop-In Template",
+  "description": "Template",
   "devDependencies": {
     "babelify": "^5.0.5",
+    "browser-sync": "^2.7.7",
     "browserify": "^9.0.3",
     "del": "^1.1.1",
-    "ecstatic": "^0.7.0",
-    "express": "^4.12.3",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
     "gulp-imagemin": "^2.2.1",
@@ -20,9 +19,6 @@
     "gulp-sourcemaps": "^1.5.1",
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^1.1.0",
-    "http": "0.0.0",
-    "imagemin": "^3.1.0",
-    "imagemin-pngquant": "^4.1.0",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0"
   }

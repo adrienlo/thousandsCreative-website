@@ -1,5 +1,4 @@
 var gulp 			= require('gulp'),
-	config 			= require('./config.json'),
 	del 			= require('del'),
 	concat 			= require('gulp-concat'),
 	source 			= require('vinyl-source-stream'),
@@ -16,12 +15,14 @@ var gulp 			= require('gulp'),
 	replace 		= require('gulp-replace'),
 	inject 			= require('gulp-inject'),
 	imageOptimizer	= require('gulp-imagemin'),
-	releaseName 	= config.name,
 
-	// server vars
-	http = require('http'),
-	express = require('express'),
-	ecstatic = require('ecstatic');
+	// config
+	config 			= require('./config.json'),
+	releaseName 	= config.name,
+	scripts			= config.source.scripts,
+
+	// server
+	browserSync		= require('browser-sync').create();
 
 function gobbleError(error) {
 	console.error(error.toString());
@@ -49,18 +50,12 @@ gulp.task('optimize-images', function() {
             progressive: true,
             svgoPlugins: [{removeViewBox: false}]
         }))
-		.pipe(gulp.dest(config.build.root + config.build.imagePath));
+		.pipe(gulp.dest(config.build.root + config.build.imagePath))
+		.pipe(browserSync.stream());
 });
 
 gulp.task('inject', function() {
 	return gulp.src(config.source.partials + 'master.html')
-		.pipe(inject(gulp.src(config.source.partials + 'primary-nav.html'), {
-			removeTags: true,
-			starttag: '<!-- inject:primaryNav:{{ext}} -->',
-			transform: function (filePath, file) {
-				return file.contents.toString('utf8');
-			}
-		}))
 		.pipe(inject(gulp.src(config.source.partials + 'body.html'), {
 			removeTags: true,
 			starttag: '<!-- inject:body:{{ext}} -->',
@@ -93,8 +88,6 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('scripts.source', function() {
-	var scripts = config.source.scripts;
-
 	//	TO DO: install watchify so it caches the files. Less file system access if unchanged files.
 	// 	https://www.npmjs.com/package/watchify
 
@@ -112,12 +105,11 @@ gulp.task('scripts.source', function() {
 		.pipe(streamify(uglify()))
 		.pipe(rename(scripts.source.outputName + '.min.js'))
 		.pipe(streamify(sourcemaps.write('.')))
-		.pipe(gulp.dest(config.build.scripts.path));
+		.pipe(gulp.dest(config.build.scripts.path))
+		.pipe(browserSync.stream());
 });
 
 gulp.task('scripts.thirdParty', function() {
-	var scripts = config.source.scripts;
-
 	return gulp.src(scripts.thirdParty.files)
 		.pipe(concat(scripts.thirdParty.outputName + '.js'))
 		.on('error', gobbleError)
@@ -126,7 +118,8 @@ gulp.task('scripts.thirdParty', function() {
 		.pipe(uglify())
 		.pipe(rename(scripts.thirdParty.outputName + '.min.js'))
 		.pipe(streamify(sourcemaps.write('.')))
-		.pipe(gulp.dest(config.build.scripts.path));
+		.pipe(gulp.dest(config.build.scripts.path))
+		.pipe(browserSync.stream());
 });
 
 gulp.task('scripts', ['scripts.source', 'scripts.thirdParty']);
@@ -139,33 +132,41 @@ gulp.task('styles', function() {
 		.pipe(minifycss())
 		.pipe(rename(releaseName + '.min.css'))
 		.pipe(gulp.dest(config.build.styles.path))
+		.pipe(browserSync.stream());
 });
 
-gulp.task('watch', function() {
-	var source = config.source;
+gulp.task('serve', ['inject', 'scripts', 'styles'], function() {
+	browserSync.init({
+		open: true,
+		browser: 'google chrome',
+		port: config.server.port || '8000',
+		server: {
+			baseDir: config.build.root
+		},
+		files: [
+			config.source.scripts.source.srcFile,
+			config.source.path + 'libs/**/*.js',
+			config.source.scripts.thirdParty.files,
+			config.source.styles.files
+		]
+	});
 
 	gulp.watch(source.imagePath, ['optimize-images']);
-	gulp.watch(source.partials + '*.html', ['inject']);
+
 	gulp.watch([
-			source.scripts.source.srcFile,
-			source.scripts.path + 'libs/**/*.js'
+			scripts.source.srcFile,
+			scripts.path + 'libs/**/*.js'
 		],
 		['jshint', 'scripts.source']);
-	gulp.watch(source.scripts.thirdParty.files, ['scripts.thirdParty']);
-	gulp.watch(source.styles.files, ['styles']);
+
+	gulp.watch(scripts.thirdParty.files, ['scripts.thirdParty']);
+
+	gulp.watch(config.source.styles.files, ['styles']);
+
+	gulp
+		.watch(config.source.partials + '*.html', ['inject'])
+		.on('change', browserSync.reload);
 });
 
-gulp.task('serve', function() {
-	var app = express(),
-		ip = config.server.ip || '127.0.0.1',
-		port = config.server.port || '8000',
-		url = ip + ':' + port;
-
-	app.use(ecstatic({ root: config.build.root, defaultExt: 'html' }));
-	http.createServer(app).listen(port, function() {
-		console.log('Server running at http://' + url);
-	});
-});
-
-gulp.task('default', ['inject', 'scripts', 'styles', 'optimize-images', 'serve', 'watch']);
+gulp.task('default', ['optimize-images', 'serve']);
 gulp.task('release', ['inject', 'scripts', 'styles', 'optimize-images']);

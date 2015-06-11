@@ -1,23 +1,118 @@
-header {
-	background: #fff;
+body.menu-open {
+	header {
+		.menu-toggle {
+			a {
+				.menu-icon {
+					@include transform(translate(0, 11px));
+					border-bottom-color: transparent;
+					&:before {
+		        		@include transform(rotate(45deg) translate(0px, 1px));
+		        		margin-top: 5px;
+		        	}
 
-	.primary-nav {
-		ul {
-			@include list-inline();
-
-			li {
-				@include font-size(14px);
+					&:after {
+		        		@include transform(rotate(-45deg) translate(-10px, 9px));
+		        		margin-top: -15px;
+		        	}
+		        }
 			}
 		}
-	}
 
-	.menu-toggle {
-
+		.primary-nav ul li {
+			@include transform(translate(0, 0));
+		}
 	}
 }
 
-.thousands-mission {
+.primary-nav {
+	float: left;
+	ul {
+		@include list-inline();
+		overflow: hidden;
 
+		li {
+			@include font-size(14px);
+			@include transition(all .35s);
+			@include transform(translate(0, -50px));
+
+			a {
+				color: $link-color;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+header {
+	@include clearfix();
+	background: #fff;
+
+	.menu-container {
+		float: right;
+	}
+
+	.menu-toggle {
+		float: left;
+		padding: 11px 10px;
+
+		a {
+			display: block;
+			height: $menu-toggle-width;
+			width: $menu-toggle-width;
+			position: relative;
+			.menu-icon {
+				@include transition(all .35s);
+				@include transform(translate(0, 17px));
+				border-bottom: solid $menu-toggle-height $menu-toggle-color;
+				color: transparent;
+				display: block;
+				height: $menu-toggle-height;
+				position: relative;
+				width: $menu-toggle-width;
+				padding-bottom: 3px;
+				&:before {
+					@include transition(all .35s);
+	        		background: $menu-toggle-color;
+	        		content: "";
+	        		display: block;
+	        		height: $menu-toggle-height;
+	        		width: $menu-toggle-width;
+	        	}
+
+				&:after {
+					@include transition(all .35s);
+	        		background: $menu-toggle-color;
+	        		content: "";
+	        		display: block;
+	        		height: $menu-toggle-height;
+	        		margin-top: -7px;
+	        		width: $menu-toggle-width;
+	        	}
+	        }
+
+	        &:hover {
+	        	text-decoration: none;
+	        }
+        }
+    }
+}
+
+.thousands-mission {
+	@include align-items();
+	@include display-flex();
+	@include justify-content(flex-end);
+	min-height: 500px;
+	article {
+		float: right;
+		margin: 25px;
+		min-width: 387px;
+		width: 30%;
+
+		p {
+			text-align: right;
+		}
+	}
 }
 
 .thousands-slides {
@@ -28,6 +123,48 @@ header {
 	}
 }
 
+.services-statement {
+	@include align-items();
+	@include display-flex();
+	@include flex-direction(column);
+	@include justify-content(center);
+	padding: 75px 20%;
+
+	p {
+		@include font-size(18px);
+		text-align: center;
+	}
+
+	a {
+		text-decoration: underline;
+		text-transform: uppercase;
+	}
+}
+
 footer {
-	background: #2a2a2a;
+	@include clearfix();
+	@include align-items();
+	@include display-flex();
+	background: $link-color;
+	padding: 75px 10%;
+
+	.footer-logo {
+		float: left;
+		margin-right: 50px;
+	}
+
+	.primary-nav {
+		float: left;
+		ul {
+			@include list-unstyled();
+
+			li {
+				display: block;
+
+				a {
+					color: #fff;
+				}
+			}
+		}
+	}
 }

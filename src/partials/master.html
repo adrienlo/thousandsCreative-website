@@ -7,8 +7,7 @@
 	<meta name="viewport" content="width=device-width" />
 
 	<link rel="stylesheet" href="css/thousandsCreative.min.css">
-
-	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<link href="//fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -18,7 +17,21 @@
 	<!-- inject:templates:html -->
 	<!-- endinject -->
 
+	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="js/thousandsCreative.thirdParty.min.js"></script>
 	<script src="js/thousandsCreative.min.js"></script>
+	<script>
+		if(document.addEventListener) {
+			document.addEventListener('DOMContentLoaded', function(event) {
+				var toggle = document.querySelector('.menu-toggle'),
+					body = document.body;
+
+				toggle.addEventListener('click', function (e) {
+					e.preventDefault();
+					body.classList.toggle('menu-open');
+				});
+			});
+		}
+	</script>
 </body>
 </html>
