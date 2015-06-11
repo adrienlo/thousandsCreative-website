@@ -32,8 +32,6 @@ body.menu-open {
 
 		li {
 			@include font-size(14px);
-			@include transition(all .35s);
-			@include transform(translate(0, -50px));
 
 			a {
 				color: $link-color;
@@ -50,6 +48,13 @@ header {
 
 	.menu-container {
 		float: right;
+	}
+
+	.primary-nav {
+		ul li {
+			@include transition(all .35s);
+			@include transform(translate(0, -50px));
+		}
 	}
 
 	.menu-toggle {
