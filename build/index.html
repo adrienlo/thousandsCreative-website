@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>thousandsCreative</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width" />
+
+	<link rel="stylesheet" href="css/thousandsCreative.min.css">
+	<link href="//fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+	<header role="header">
+		<div class="menu-container">
+			<nav class="primary-nav" role="navigation">
+				<ul>
+					<li><a href="#">Work</a></li>
+					<li><a href="#">Services</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+			<div class="menu-toggle">
+				<a href="#">
+					<span class="ada-hidden">menu</span>
+					<span class="menu-icon"></span>
+				</a>
+			</div>
+		</div>
+	</header>
+	
+	<section class="thousands-mission">
+		<article>
+			<h1><img src="images/wearethousands.png" width="387" height="37" alt="We Are Thousands" /></h1>
+			<p>We are a full service creative agency that tells brand stories, shapes strategy, writes campaign messaging, creates campaign visual directions, and creates a boat load of premium content.</p>
+		</article>
+	</section>
+	
+	<section class="thousands-slides">
+		<div class="slide">
+			<picture>
+				<source media="(min-width: 1600px)" srcset="images/slide_01_1600.jpg" />
+				<source media="(min-width: 1200px)" srcset="images/slide_01_1200.jpg" />
+				<source media="(min-width: 900px)" srcset="images/slide_01_900.jpg" />
+				<source media="(min-width: 500px)" srcset="images/slide_01_500.jpg" />
+				<img src="images/slide_01_1600.jpg" alt="project">
+			</picture>
+		</div>
+	</section>
+	
+	<section class="services-statement">
+		<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+		<p><a href="#">View Services</a></p>
+	</section>
+	
+	<footer>
+		<div class="footer-logo">
+			<img src="images/thousands_footer.png" width="295" height="48" alt="We Are Thousands" />
+		</div>
+		<nav class="primary-nav">
+			<ul>
+				<li><a href="#">Work</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</footer>
+
+	
+
+	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="js/thousandsCreative.thirdParty.min.js"></script>
+	<script src="js/thousandsCreative.min.js"></script>
+	<script>
+		if(document.addEventListener) {
+			document.addEventListener('DOMContentLoaded', function(event) {
+				var toggle = document.querySelector('.menu-toggle'),
+					body = document.body;
+
+				toggle.addEventListener('click', function (e) {
+					e.preventDefault();
+					body.classList.toggle('menu-open');
+				});
+			});
+		}
+	</script>
+</body>
+</html>
