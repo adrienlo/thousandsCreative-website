@@ -5,11 +5,64 @@ body {
 	}
 }
 
+@media (max-width: $max-xsmall) {
+	.thousands-mission {
+		img {
+			@include full-width();
+		}
+	}
+
+	footer {
+		.footer-logo {
+			img {
+			}
+		}
+
+		.primary-nav {
+			text-align: center;
+			ul {
+
+			}
+		}
+	}
+}
+
 @media (min-width: $min-xsmall) {
 	body {
 		&:before {
 			display: none !important;
 			content: "mobile";
+		}
+	}
+
+	.thousands-mission {
+		article {
+			min-width: 387px;
+			width: 30%;
+		}
+	}
+
+	footer {
+		@include align-items();
+		@include display-flex();
+
+		.footer-logo {
+			margin-right: 50px;
+			img {
+				@include full-width();
+			}
+		}
+
+		.primary-nav {
+			@include clearfix();
+
+			ul {
+				@include list-unstyled();
+
+				li {
+					display: block;
+				}
+			}
 		}
 	}
 }
@@ -19,6 +72,16 @@ body {
 		&:before {
 			display: none !important;
 			content: "tablet";
+		}
+	}
+
+	footer {
+		.footer-logo {
+			float: left;
+		}
+
+		.primary-nav {
+			float: left;
 		}
 	}
 }
