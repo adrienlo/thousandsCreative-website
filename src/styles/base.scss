@@ -2,6 +2,9 @@ $font-sans-base: 'Roboto', sans-serif;
 $font-serif-base: $font-sans-base;
 $font-emphasis: $font-sans-base;
 
+$font-paragraph: 'Open Sans', sans-serif;
+$font-paragraph-light: 'Open Sans Condensed', sans-serif;
+
 $lineheight			: 1.8em;
 $letterSpacing		: 1.2px;
 
@@ -41,6 +44,14 @@ html, body {
 a {
 	color: $link-color;
 	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+p {
+	font-family: $font-paragraph;
 }
 
 h1, h2, h3, h4, h5 {

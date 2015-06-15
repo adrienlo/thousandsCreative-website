@@ -25,7 +25,6 @@ body.menu-open {
 }
 
 .primary-nav {
-	float: left;
 	ul {
 		@include list-inline();
 		overflow: hidden;
@@ -51,6 +50,7 @@ header {
 	}
 
 	.primary-nav {
+		float: left;
 		ul li {
 			@include transition(all .35s);
 			@include transform(translate(0, -50px));
@@ -95,10 +95,6 @@ header {
 	        		width: $menu-toggle-width;
 	        	}
 	        }
-
-	        &:hover {
-	        	text-decoration: none;
-	        }
         }
     }
 }
@@ -111,8 +107,7 @@ header {
 	article {
 		float: right;
 		margin: 25px;
-		min-width: 387px;
-		width: 30%;
+		width: 100%;
 
 		p {
 			text-align: right;
@@ -148,24 +143,19 @@ header {
 
 footer {
 	@include clearfix();
-	@include align-items();
-	@include display-flex();
 	background: $link-color;
 	padding: 75px 10%;
 
 	.footer-logo {
-		float: left;
-		margin-right: 50px;
+		width: 100%;
 	}
 
 	.primary-nav {
-		float: left;
+		width: 100%;
 		ul {
-			@include list-unstyled();
+			@include list-inline();
 
 			li {
-				display: block;
-
 				a {
 					color: #fff;
 				}
